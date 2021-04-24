@@ -5,18 +5,21 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://example.com">
-  <title>Hexo</title>
+  <link rel="dns-prefetch" href="https://lq2021.github.io">
+  <title>quan的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="Hexo">
+  <meta name="description" content="一个喜欢学习的小废物">
+<meta property="og:type" content="website">
+<meta property="og:title" content="quan的博客">
+<meta property="og:url" content="https://lq2021.github.io/index.html">
+<meta property="og:site_name" content="quan的博客">
+<meta property="og:description" content="一个喜欢学习的小废物">
 <meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
+<meta property="article:author" content="quan">
+<meta property="article:tag" content="前端 css  js">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="quan的博客" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -43,7 +46,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="" class="js-avatar">
+			<img src="/assets/img/avatar.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/"></a></h1>
@@ -73,9 +76,9 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+					<a class="github" target="_blank" href="https://github.com/lq2021" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="qq" target="_blank" href="#" title="qq"><i class="icon-qq"></i></a>
+					<a class="qq" target="_blank" href="https://user.qzone.qq.com/854664843" title="qq"><i class="icon-qq"></i></a>
 		        
 					<a class="weixin" target="_blank" href="#" title="weixin"><i class="icon-weixin"></i></a>
 		        
@@ -95,7 +98,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="" class="js-avatar">
+				<img src="/assets/img/avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author"></h1>
@@ -110,9 +113,9 @@
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+						<a class="github" target="_blank" href="https://github.com/lq2021" title="github"><i class="icon-github"></i></a>
 			        
-						<a class="qq" target="_blank" href="#" title="qq"><i class="icon-qq"></i></a>
+						<a class="qq" target="_blank" href="https://user.qzone.qq.com/854664843" title="qq"><i class="icon-qq"></i></a>
 			        
 						<a class="weixin" target="_blank" href="#" title="weixin"><i class="icon-weixin"></i></a>
 			        
@@ -143,10 +146,57 @@
     <article id="post-first" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/24/first/">js数据类型</a>
+    </h1>
+  
+
+        
+        <a href="/2021/04/24/first/" class="archive-article-date">
+  	<time datetime="2021-04-24T13:09:34.331Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-24</time>
+</a>
+        
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>first</p>
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>ES有6中简单的数据类型（也称原始类型）: Undefined Null Boolean Number String Symbol symbol 是ES6新增的。还有一种复杂的数据类型 Object  是一种无序名值对的集合。</p>
+<h2 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h2><p><strong>typeof</strong>可以确定变量的数据类型。 对一个变量使用 <strong>typeof</strong> 操作符 会返回字符串有以下几种: ‘undefined’ ‘boolean’ ‘string’ ‘number’ ‘object’ ‘function’ ‘symbol’。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;&#125;;</span><br><span class="line"><span class="keyword">let</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;1&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> num1 = <span class="number">12</span>;</span><br><span class="line"><span class="keyword">let</span> bool = <span class="literal">true</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> obj);   <span class="comment">//&#x27;object&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> fn);  <span class="comment">// &#x27;function&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> str);   <span class="comment">// &#x27;string&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> num1);  <span class="comment">// &#x27;number&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> bool);  <span class="comment">// &#x27;boolean&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> obj.a);    <span class="comment">// &#x27;undefined&#x27;</span></span><br></pre></td></tr></table></figure>
 
+<h2 id="Undefined类型"><a href="#Undefined类型" class="headerlink" title="Undefined类型"></a>Undefined类型</h2><p><strong>Undefined</strong> 只有一个值，就是undefined。 当使用let 或者 var 声明了变量但没有初始化时，就相当于给变量赋予了undefined值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a;</span><br><span class="line"><span class="keyword">let</span> b = <span class="literal">undefined</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a === b); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>！注意undefined值的变量和未定义变量是有区别的</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a;</span><br><span class="line"><span class="comment">//let b  </span></span><br><span class="line"><span class="comment">//b变量没有被定义</span></span><br><span class="line"><span class="built_in">console</span>.log(a);   <span class="comment">// &#x27;undefined&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(b);   <span class="comment">//报错</span></span><br></pre></td></tr></table></figure>
+
+<p>但使用typeof 操作符时</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a;</span><br><span class="line"><span class="comment">// let b</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> a);   <span class="comment">// &#x27;undefined&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> b);   <span class="comment">// &#x27;undefined&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>无论声明还是未声明，typeof返回的都是字符串’undefined’。 undefined是一个假值，因此需要用更简洁的方式检测它。</p>
+<h2 id="Null-类型"><a href="#Null-类型" class="headerlink" title="Null 类型"></a>Null 类型</h2><p>Null类型也只有一个值 特殊值null。 本质上讲，null值表示一个空对象指针，所以typeof null值时会返回 ‘object’ 的原因</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> time = <span class="literal">null</span>;</span><br><span class="line">consloe.log(<span class="keyword">typeof</span> time);   <span class="comment">//&#x27;object&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>undefined值是由null值派生的，所以，它们表面上相等。但是绝对上，它们不相等。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="literal">null</span> == <span class="literal">undefined</span>); <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">null</span> === <span class="literal">undefined</span>);  <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<h2 id="Boolean-类型"><a href="#Boolean-类型" class="headerlink" title="Boolean 类型"></a>Boolean 类型</h2><p>Boolean类型有两个字面值：true 和 false.  Boolean()函数可以将其他类型的值转变成Boolean类型</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> strBoolean = <span class="built_in">Boolean</span>(str);</span><br><span class="line"><span class="built_in">console</span>.log(strBoolean);  <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Number-类型"><a href="#Number-类型" class="headerlink" title="Number 类型"></a>Number 类型</h2><p>Number类型包含整数和浮点数。对于整数，在javascript中，有+0 和 -0的存在。对于浮点数，在检测两个值相等时，用==不是特别严谨。比如 0.1 + 0.2 == 0.3;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">0.1</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="number">0.2</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a + b);        <span class="comment">//0.300 000 000 000 000 04</span></span><br><span class="line"><span class="built_in">console</span>.log(a + b == <span class="number">0.3</span>);  <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<p>ES并不支持世界上的所有数值。ES可以表示的最小数值保存在 Number.MIN_VALUE中。最大数值是Number.MAX_VALUE。 如果某个数值超过了JavaScript可以表示的范围，那么该值会被转化成 Infinity(无穷值);</p>
+<h4 id="NaN"><a href="#NaN" class="headerlink" title="NaN"></a>NaN</h4><p>NaN是一个特殊的值 意思是 “不是数值”(Not a Number) 用来表示本来要返回的数值的操作失败了。 比如使用0做除法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">0</span>/<span class="number">0</span>); <span class="comment">//NaN</span></span><br></pre></td></tr></table></figure>
+<p>NaN 有几个独特的属性。<br>任何涉及NaN的操作始终返回NaN;<br>NaN不等于包括NaN在内的任何值;<br>isNaN()函数：接收一个参数，任意数据类型，判断该参数是否可以转化成数字。</p>
+<h3 id="数值转换"><a href="#数值转换" class="headerlink" title="数值转换"></a>数值转换</h3><p>Number(),parseInt(),parseFloat()  将非数值转换为数值，具体使用方法，以后详细介绍。</p>
+<h2 id="String-类型"><a href="#String-类型" class="headerlink" title="String 类型"></a>String 类型</h2><p>字符串类型可以使用双引号、单引号、反引号标示。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str1 = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> str2 = <span class="string">&quot;hello world&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> str3 = <span class="string">`heoll world`</span>;</span><br></pre></td></tr></table></figure>
+<p>有两种方式把值转换为字符串。</p>
+<ol>
+<li>toString() 可以用于数值、布尔值、对象和字符串值。 但是null和undefined没有toString()方法</li>
+<li>String()  该函数的规则<br> 如果值有toString() 方法 则调用该方法并返回结果<br> 如果值是null或undefined  则返回’null’ 或 ‘undefined’</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> age = <span class="number">18</span>;</span><br><span class="line"><span class="keyword">let</span> ageStr = age.toString(); </span><br><span class="line"><span class="built_in">console</span>.log(ageStr);   <span class="comment">// &#x27;18&#x27;</span></span><br><span class="line"><span class="keyword">let</span> found = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">let</span> foundStr = found.toString();</span><br><span class="line"><span class="built_in">console</span>.log(foundStr);   <span class="comment">// &#x27;true&#x27;;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> time = <span class="literal">null</span>;</span><br><span class="line"><span class="comment">// let timeStr1 = time.toString();  // 报错</span></span><br><span class="line"><span class="keyword">let</span> timeStr2 = <span class="built_in">String</span>(<span class="literal">null</span>);</span><br><span class="line"><span class="comment">// console.log(timeStr1);</span></span><br><span class="line"><span class="built_in">console</span>.log(timeStr2);</span><br></pre></td></tr></table></figure>
       
 
       
@@ -198,7 +248,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2021 John Doe
+    		&copy; 2021 quan
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
