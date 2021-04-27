@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://lq2021.github.io">
-  <title>js数据类型 | quan的博客</title>
+  <title>数组基础2(补充) | quan的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="简介ES6中简单的数据类型（也称原始类型）: Undefined Null Boolean Number String Symbol symbol 是ES6新增的。还有一种复杂的数据类型 Object  是一种无序名值对的集合。 typeoftypeof可以确定变量的数据类型。 对一个变量使用 typeof 操作符 会返回字符串有以下几种: ‘undefined’ ‘boolean’ ‘str">
+  <meta name="description" content="数组常用方法搜索数组indexOf(text,start)text 查找的元素start  可选项  起始搜索位置 默认为0 返回要查找元素在数组的位置 没有找到 就返回 -1 123let arr &#x3D; [1,2,3,4];console.log(arr.indexOf(2));   &#x2F;&#x2F;1console.log(arr.indexOf(2,2));  &#x2F;&#x2F; -1 lastIndexOf 与该">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js数据类型">
-<meta property="og:url" content="https://lq2021.github.io/2021/04/24/first/index.html">
+<meta property="og:title" content="数组基础2(补充)">
+<meta property="og:url" content="https://lq2021.github.io/2021/04/27/003/index.html">
 <meta property="og:site_name" content="quan的博客">
-<meta property="og:description" content="简介ES6中简单的数据类型（也称原始类型）: Undefined Null Boolean Number String Symbol symbol 是ES6新增的。还有一种复杂的数据类型 Object  是一种无序名值对的集合。 typeoftypeof可以确定变量的数据类型。 对一个变量使用 typeof 操作符 会返回字符串有以下几种: ‘undefined’ ‘boolean’ ‘str">
+<meta property="og:description" content="数组常用方法搜索数组indexOf(text,start)text 查找的元素start  可选项  起始搜索位置 默认为0 返回要查找元素在数组的位置 没有找到 就返回 -1 123let arr &#x3D; [1,2,3,4];console.log(arr.indexOf(2));   &#x2F;&#x2F;1console.log(arr.indexOf(2,2));  &#x2F;&#x2F; -1 lastIndexOf 与该">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-04-24T13:09:34.331Z">
-<meta property="article:modified_time" content="2021-04-27T15:23:23.410Z">
+<meta property="article:published_time" content="2021-04-27T15:57:08.837Z">
+<meta property="article:modified_time" content="2021-04-27T16:31:15.209Z">
 <meta property="article:author" content="quan">
 <meta property="article:tag" content="前端 css  js">
 <meta name="twitter:card" content="summary">
@@ -143,20 +143,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-first" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-003" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      js数据类型
+      数组基础2(补充)
     </h1>
   
 
         
-        <a href="/2021/04/24/first/" class="archive-article-date">
-  	<time datetime="2021-04-24T13:09:34.331Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-24</time>
+        <a href="/2021/04/27/003/" class="archive-article-date">
+  	<time datetime="2021-04-27T15:57:08.837Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-27</time>
 </a>
         
       </header>
@@ -165,40 +165,31 @@
       
         <br>
 
-<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>ES6中简单的数据类型（也称原始类型）: Undefined Null Boolean Number String Symbol symbol 是ES6新增的。还有一种复杂的数据类型 Object  是一种无序名值对的集合。</p>
-<h2 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h2><p><strong>typeof</strong>可以确定变量的数据类型。 对一个变量使用 <strong>typeof</strong> 操作符 会返回字符串有以下几种: ‘undefined’ ‘boolean’ ‘string’ ‘number’ ‘object’ ‘function’ ‘symbol’。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;&#125;;</span><br><span class="line"><span class="keyword">let</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;1&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> num1 = <span class="number">12</span>;</span><br><span class="line"><span class="keyword">let</span> bool = <span class="literal">true</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> obj);   <span class="comment">//&#x27;object&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> fn);  <span class="comment">// &#x27;function&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> str);   <span class="comment">// &#x27;string&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> num1);  <span class="comment">// &#x27;number&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> bool);  <span class="comment">// &#x27;boolean&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> obj.a);    <span class="comment">// &#x27;undefined&#x27;</span></span><br></pre></td></tr></table></figure>
+<h2 id="数组常用方法"><a href="#数组常用方法" class="headerlink" title="数组常用方法"></a>数组常用方法</h2><h3 id="搜索数组"><a href="#搜索数组" class="headerlink" title="搜索数组"></a>搜索数组</h3><h4 id="indexOf-text-start"><a href="#indexOf-text-start" class="headerlink" title="indexOf(text,start)"></a>indexOf(text,start)</h4><p>text 查找的元素<br>start  可选项  起始搜索位置 默认为0</p>
+<p>返回要查找元素在数组的位置 没有找到 就返回 -1</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr.indexOf(<span class="number">2</span>));   <span class="comment">//1</span></span><br><span class="line"><span class="built_in">console</span>.log(arr.indexOf(<span class="number">2</span>,<span class="number">2</span>));  <span class="comment">// -1</span></span><br></pre></td></tr></table></figure>
+<p>lastIndexOf 与该方法差不多  只是从数组末尾开始向前搜索</p>
+<h4 id="includes-text-start"><a href="#includes-text-start" class="headerlink" title="includes(text,start)"></a>includes(text,start)</h4><p>和indexOf()类似 返回布尔值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr.includes(<span class="number">2</span>));  <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(arr.includes(<span class="number">2</span>,<span class="number">2</span>));   <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="Undefined类型"><a href="#Undefined类型" class="headerlink" title="Undefined类型"></a>Undefined类型</h2><p><strong>Undefined</strong> 只有一个值，就是undefined。 当使用let 或者 var 声明了变量但没有初始化时，就相当于给变量赋予了undefined值。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a;</span><br><span class="line"><span class="keyword">let</span> b = <span class="literal">undefined</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a === b); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-<p>！注意undefined值的变量和未定义变量是有区别的</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a;</span><br><span class="line"><span class="comment">//let b  </span></span><br><span class="line"><span class="comment">//b变量没有被定义</span></span><br><span class="line"><span class="built_in">console</span>.log(a);   <span class="comment">// &#x27;undefined&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(b);   <span class="comment">//报错</span></span><br></pre></td></tr></table></figure>
+<h4 id="find-fn-this"><a href="#find-fn-this" class="headerlink" title="find(fn,this)"></a>find(fn,this)</h4><p>fn 一个函数 fn(value,index,arr)<br>    value 数组值<br>    index 数组下标<br>    arr  原数组<br>this  可选参数  用于指定fn函数this的值</p>
+<p>返回第一个匹配的元素  没有就返回undefined</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line"><span class="keyword">let</span> res = arr.find(<span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>);</span><br><span class="line">    <span class="comment">// 1 0 [1,2,3,4]</span></span><br><span class="line">    <span class="comment">// 2 1 [1,2,3,4]</span></span><br><span class="line">    <span class="comment">// 3 2 [1,2,3,4]</span></span><br><span class="line">    <span class="comment">// 4 3 [1,2,3,4]</span></span><br><span class="line">    <span class="keyword">return</span> value &gt; <span class="number">2</span>;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(res);   <span class="comment">//3</span></span><br></pre></td></tr></table></figure>
 
-<p>但使用typeof 操作符时</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a;</span><br><span class="line"><span class="comment">// let b</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> a);   <span class="comment">// &#x27;undefined&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> b);   <span class="comment">// &#x27;undefined&#x27;</span></span><br></pre></td></tr></table></figure>
-<p>无论声明还是未声明，typeof返回的都是字符串’undefined’。 undefined是一个假值，因此需要用更简洁的方式检测它。</p>
-<h2 id="Null-类型"><a href="#Null-类型" class="headerlink" title="Null 类型"></a>Null 类型</h2><p>Null类型也只有一个值 特殊值null。 本质上讲，null值表示一个空对象指针，所以typeof null值时会返回 ‘object’ 的原因</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> time = <span class="literal">null</span>;</span><br><span class="line">consloe.log(<span class="keyword">typeof</span> time);   <span class="comment">//&#x27;object&#x27;</span></span><br></pre></td></tr></table></figure>
-<p>undefined值是由null值派生的，所以，它们表面上相等。但是绝对上，它们不相等。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="literal">null</span> == <span class="literal">undefined</span>); <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">null</span> === <span class="literal">undefined</span>);  <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
-<h2 id="Boolean-类型"><a href="#Boolean-类型" class="headerlink" title="Boolean 类型"></a>Boolean 类型</h2><p>Boolean类型有两个字面值：true 和 false.  Boolean()函数可以将其他类型的值转变成Boolean类型</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> strBoolean = <span class="built_in">Boolean</span>(str);</span><br><span class="line"><span class="built_in">console</span>.log(strBoolean);  <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<h4 id="findIndex-fn-this"><a href="#findIndex-fn-this" class="headerlink" title="findIndex(fn,this)"></a>findIndex(fn,this)</h4><p>和find()类似 只不过返回的是第一个匹配元素的下标值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> people = [</span><br><span class="line">    &#123;</span><br><span class="line">        name: <span class="string">&#x27;zhangpeng&#x27;</span>,</span><br><span class="line">        age: <span class="number">38</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        name: <span class="string">&#x27;liuquan&#x27;</span>,</span><br><span class="line">        age: <span class="number">18</span></span><br><span class="line">    &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(people.findIndex(<span class="function">(<span class="params">value</span>) =&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> value.age &lt; <span class="number">20</span></span><br><span class="line">&#125;))  <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="Number-类型"><a href="#Number-类型" class="headerlink" title="Number 类型"></a>Number 类型</h2><p>Number类型包含整数和浮点数。对于整数，在javascript中，有+0 和 -0的存在。对于浮点数，在检测两个值相等时，用==不是特别严谨。比如 0.1 + 0.2 == 0.3;</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">0.1</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="number">0.2</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a + b);        <span class="comment">//0.300 000 000 000 000 04</span></span><br><span class="line"><span class="built_in">console</span>.log(a + b == <span class="number">0.3</span>);  <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
-<p>ES并不支持世界上的所有数值。ES可以表示的最小数值保存在 Number.MIN_VALUE中。最大数值是Number.MAX_VALUE。 如果某个数值超过了JavaScript可以表示的范围，那么该值会被转化成 Infinity(无穷值);</p>
-<h4 id="NaN"><a href="#NaN" class="headerlink" title="NaN"></a>NaN</h4><p>NaN是一个特殊的值 意思是 “不是数值”(Not a Number) 用来表示本来要返回的数值的操作失败了。 比如使用0做除法</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">0</span>/<span class="number">0</span>); <span class="comment">//NaN</span></span><br></pre></td></tr></table></figure>
-<p>NaN 有几个独特的属性。<br>任何涉及NaN的操作始终返回NaN;<br>NaN不等于包括NaN在内的任何值;<br>isNaN()函数：接收一个参数，任意数据类型，判断该参数是否可以转化成数字。</p>
-<h3 id="数值转换"><a href="#数值转换" class="headerlink" title="数值转换"></a>数值转换</h3><p>Number(),parseInt(),parseFloat()  将非数值转换为数值，具体使用方法，以后详细介绍。</p>
-<h2 id="String-类型"><a href="#String-类型" class="headerlink" title="String 类型"></a>String 类型</h2><p>字符串类型可以使用双引号、单引号、反引号标示。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str1 = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> str2 = <span class="string">&quot;hello world&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> str3 = <span class="string">`heoll world`</span>;</span><br></pre></td></tr></table></figure>
-<p>有两种方式把值转换为字符串。</p>
-<ol>
-<li>toString() 可以用于数值、布尔值、对象和字符串值。 但是null和undefined没有toString()方法</li>
-<li>String()  该函数的规则<br> 如果值有toString() 方法 则调用该方法并返回结果<br> 如果值是null或undefined  则返回’null’ 或 ‘undefined’</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> age = <span class="number">18</span>;</span><br><span class="line"><span class="keyword">let</span> ageStr = age.toString(); </span><br><span class="line"><span class="built_in">console</span>.log(ageStr);   <span class="comment">// &#x27;18&#x27;</span></span><br><span class="line"><span class="keyword">let</span> found = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">let</span> foundStr = found.toString();</span><br><span class="line"><span class="built_in">console</span>.log(foundStr);   <span class="comment">// &#x27;true&#x27;;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> time = <span class="literal">null</span>;</span><br><span class="line"><span class="comment">// let timeStr1 = time.toString();  // 报错</span></span><br><span class="line"><span class="keyword">let</span> timeStr2 = <span class="built_in">String</span>(<span class="literal">null</span>);</span><br><span class="line"><span class="comment">// console.log(timeStr1);</span></span><br><span class="line"><span class="built_in">console</span>.log(timeStr2);</span><br></pre></td></tr></table></figure>
+
+<h3 id="排序方法"><a href="#排序方法" class="headerlink" title="排序方法"></a>排序方法</h3><h4 id="reverse"><a href="#reverse" class="headerlink" title="reverse()"></a>reverse()</h4><p>将数组元素反向排列</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">console</span>.log(arr.reverse());  <span class="comment">// [5,4,3,2,1]</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="sort"><a href="#sort" class="headerlink" title="sort()"></a>sort()</h4><p>默认情况 sort按升序排列数组 不过会在每一项调用String()，然后比较字符串来决定顺序</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">0</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">10</span>,<span class="number">15</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr.sort());  <span class="comment">//[0,1,10,15,5]</span></span><br></pre></td></tr></table></figure>
+
+<p>sort()可以接收一个参数 比较函数<br>该函数的返回值 决定数组的那一项要不要移动位置<br>返回正数  第一个参数 和 第二个参数改变位置<br>返回负数  则不要移动</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">8</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">3</span>,<span class="number">5</span>];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compare</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a - b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compare1</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> b - a</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(arr.sort(compare));  <span class="comment">//[3,5,5,6,7,8];</span></span><br><span class="line"><span class="built_in">console</span>.log(arr.sort(compare1));  <span class="comment">//[8,7,6,5,5,3];</span></span><br></pre></td></tr></table></figure>
+<p>不过如果只是反转数组，reverse()效率更快</p>
+
       
 
       
@@ -287,7 +278,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://lq2021.github.io/2021/04/24/first/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://lq2021.github.io/2021/04/27/003/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -301,15 +292,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/04/26/001/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          字符串详解
-        
-      </div>
-    </a>
   
+    <a href="/2021/04/27/002/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">数组基础1</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
