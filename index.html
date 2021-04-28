@@ -143,6 +143,177 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-005" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/28/005/">数组进阶</a>
+    </h1>
+  
+
+        
+        <a href="/2021/04/28/005/" class="archive-article-date">
+  	<time datetime="2021-04-28T05:56:14.908Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <br>
+简介 深入了解数组的方法，实现一些常用的数组方法，并添加一些数组原型没有的数组方法
+
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/04/28/005/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-004" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/28/004/">数组基础3</a>
+    </h1>
+  
+
+        
+        <a href="/2021/04/28/004/" class="archive-article-date">
+  	<time datetime="2021-04-28T05:00:38.882Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <br>
+
+<h2 id="归并方法"><a href="#归并方法" class="headerlink" title="归并方法"></a>归并方法</h2><h3 id="reduce-fn-start"><a href="#reduce-fn-start" class="headerlink" title="reduce(fn,start)"></a>reduce(fn,start)</h3><p>fn(preValue,curValue,index,arr)<br>    preValue: 上一个归并值<br>    curValue:  当前元素<br>    index:      当前索引值<br>    arr:    原数组<br>start 初始值，可选参数 没有则第一次迭代从数组第二项开始，start = arr[0]<br>返回值 是每一项迭代后的结果的累积值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line"><span class="keyword">let</span> res = arr.reduce(<span class="function">(<span class="params">preV,cur</span>) =&gt;</span> preV + cur);</span><br><span class="line"><span class="built_in">console</span>.log(res);   <span class="comment">//15</span></span><br></pre></td></tr></table></figure>
+<br>
+
+<h3 id="reduceRight-fn-this"><a href="#reduceRight-fn-this" class="headerlink" title="reduceRight(fn,this)"></a>reduceRight(fn,this)</h3><p>与reduce类似，只是方向相反</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line"><span class="keyword">let</span> res = arr.reduceRight(<span class="function">(<span class="params">preV,cur</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(preV);   <span class="comment">//4 7 9</span></span><br><span class="line">    <span class="keyword">return</span> preV + cur;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(res);   <span class="comment">// 10</span></span><br></pre></td></tr></table></figure>
+<br>
+
+<h2 id="数组转换"><a href="#数组转换" class="headerlink" title="数组转换"></a>数组转换</h2><h3 id="join"><a href="#join" class="headerlink" title="join()"></a>join()</h3><p>将数组元素连接成一个字符串，以某种形式连接<br>默认是使用逗号连接</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr.join());  <span class="comment">//&#x27;1,2,3,4&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(arr.join(<span class="string">&#x27;-&#x27;</span>));   <span class="comment">//&#x27;1-2-3-4&#x27;</span></span><br></pre></td></tr></table></figure>
+<br>
+
+<h3 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString()"></a>toString()</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr.toString());  <span class="comment">//&#x27;1,2,3,4&#x27;</span></span><br></pre></td></tr></table></figure>
+<br>
+
+<h2 id="创建数组的静态方法"><a href="#创建数组的静态方法" class="headerlink" title="创建数组的静态方法"></a>创建数组的静态方法</h2><h3 id="from-obj-fn-this"><a href="#from-obj-fn-this" class="headerlink" title="from(obj,fn,this)"></a>from(obj,fn,this)</h3><p>obj 类数组对象也可以是数组<br>fn  映射函数 可选值<br>this  fn的函数this指向</p>
+<p>将类数组obj转换为数组实例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line"><span class="keyword">let</span> res1 = <span class="built_in">Array</span>.from(arr,<span class="function"><span class="params">x</span> =&gt;</span> x * <span class="number">2</span>);</span><br><span class="line"><span class="keyword">let</span> res2 = <span class="built_in">Array</span>.from(arr,<span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x * <span class="built_in">this</span>.count</span><br><span class="line">&#125;,&#123;<span class="attr">count</span>: <span class="number">3</span>&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(res1);  <span class="comment">//[2,4,6,8] </span></span><br><span class="line"><span class="built_in">console</span>.log(res2);   <span class="comment">//[3,6,9,12]</span></span><br></pre></td></tr></table></figure>
+<br>
+
+<h3 id="of"><a href="#of" class="headerlink" title="of"></a>of</h3><p>将一组参数转换为数组</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Array</span>.of(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>));  <span class="comment">//[1,2,3,4,5]</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Array</span>.of(<span class="string">&#x27;one&#x27;</span>,<span class="string">&#x27;two&#x27;</span>,<span class="string">&#x27;three&#x27;</span>)); <span class="comment">//[&#x27;one&#x27;,&#x27;two&#x27;,&#x27;three&#x27;]</span></span><br></pre></td></tr></table></figure>
+<br>
+
+<h2 id="检索数组"><a href="#检索数组" class="headerlink" title="检索数组"></a>检索数组</h2><h3 id="keys"><a href="#keys" class="headerlink" title="keys()"></a>keys()</h3><p>返回 数组索引的迭代器</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="string">&#x27;foo&#x27;</span>,<span class="string">&#x27;bar&#x27;</span>,<span class="string">&#x27;nav&#x27;</span>,<span class="string">&#x27;left&#x27;</span>];</span><br><span class="line"><span class="keyword">let</span> res = <span class="built_in">Array</span>.from(arr.keys()); <span class="comment">//配合from该迭代器转为数组</span></span><br><span class="line"><span class="keyword">let</span> res1 = [...arr.keys()];<span class="comment">// 或者使用扩展运算符</span></span><br><span class="line"><span class="built_in">console</span>.log(res);  <span class="comment">//[0,1,2,3]</span></span><br><span class="line"><span class="built_in">console</span>.log(res1);   <span class="comment">//[0,1,2,3]</span></span><br></pre></td></tr></table></figure>
+<br>
+
+<h3 id="values"><a href="#values" class="headerlink" title="values()"></a>values()</h3><p>返回 数组元素的迭代器 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="string">&#x27;foo&#x27;</span>,<span class="string">&#x27;bar&#x27;</span>,<span class="string">&#x27;nav&#x27;</span>,<span class="string">&#x27;left&#x27;</span>];</span><br><span class="line"><span class="keyword">let</span> res = <span class="built_in">Array</span>.from(arr.values());</span><br><span class="line"><span class="keyword">let</span> res1 = [...arr.values()]</span><br><span class="line"><span class="built_in">console</span>.log(res);  <span class="comment">//[&#x27;foo&#x27;,&#x27;bar&#x27;,&#x27;nav&#x27;,&#x27;left&#x27;]</span></span><br><span class="line"><span class="built_in">console</span>.log(res1);  <span class="comment">//[&#x27;foo&#x27;,&#x27;bar&#x27;,&#x27;nav&#x27;,&#x27;left&#x27;]</span></span><br></pre></td></tr></table></figure>
+<br>
+
+<h3 id="entries"><a href="#entries" class="headerlink" title="entries()"></a>entries()</h3><p>返回 索引/值 对的迭代器</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="string">&#x27;foo&#x27;</span>,<span class="string">&#x27;bar&#x27;</span>,<span class="string">&#x27;nav&#x27;</span>,<span class="string">&#x27;left&#x27;</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> [index,value] <span class="keyword">of</span> arr.entries())&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(index, value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//0, &#x27;foo&#x27;</span></span><br><span class="line"><span class="comment">//1, &#x27;bar&#x27;</span></span><br><span class="line"><span class="comment">//2, &#x27;nav&#x27;</span></span><br><span class="line"><span class="comment">//3, &#x27;left&#x27;</span></span><br></pre></td></tr></table></figure>
+<br>
+
+<h2 id="数组填充"><a href="#数组填充" class="headerlink" title="数组填充"></a>数组填充</h2><h3 id="fill-res-start-end"><a href="#fill-res-start-end" class="headerlink" title="fill(res,start,end)"></a>fill(res,start,end)</h3><p>res 填充的值<br>start  开始索引<br>end   结束索引  不填充该索引<br>索引值支持负数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">arr.fill(<span class="number">5</span>);   <span class="comment">//用5填充数组</span></span><br><span class="line"><span class="built_in">console</span>.log(arr);   <span class="comment">//[5,5,5,5,5]</span></span><br><span class="line"></span><br><span class="line">arr.fill(<span class="number">0</span>);  <span class="comment">//重置</span></span><br><span class="line"></span><br><span class="line">arr.fill(<span class="number">6</span>,<span class="number">3</span>);  <span class="comment">//用6填充索引大于等于3的元素</span></span><br><span class="line"><span class="built_in">console</span>.log(arr);   <span class="comment">//[0,0,0,6,6]</span></span><br><span class="line"></span><br><span class="line">arr.fill(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">arr.fill(<span class="number">8</span>,<span class="number">1</span>,<span class="number">4</span>);  <span class="comment">//用8填充索引大于等于1且小于4的元素</span></span><br><span class="line"><span class="built_in">console</span>.log(arr);  <span class="comment">//[0,8,8,8,0]</span></span><br></pre></td></tr></table></figure>
+<p>fill()会静默的忽略超出数组边界、零长度及方向相反的索引范围</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">arr.fill(<span class="number">2</span>,-<span class="number">10</span>,-<span class="number">6</span>);  <span class="comment">//索引过低 忽略</span></span><br><span class="line"><span class="built_in">console</span>.log(arr); </span><br><span class="line"></span><br><span class="line">arr.fill(<span class="number">4</span>,<span class="number">10</span>,<span class="number">15</span>);   <span class="comment">// 索引过高 忽略</span></span><br><span class="line"><span class="built_in">console</span>.log(arr);</span><br><span class="line"></span><br><span class="line">arr.fill(<span class="number">6</span>,<span class="number">4</span>,<span class="number">2</span>);    <span class="comment">//索引方向 忽略</span></span><br><span class="line"><span class="built_in">console</span>.log(arr);</span><br><span class="line"></span><br><span class="line">arr.fill(<span class="number">5</span>,<span class="number">3</span>,<span class="number">9</span>);    <span class="comment">//索引部分可用 填充部分</span></span><br><span class="line"><span class="built_in">console</span>.log(arr);   <span class="comment">//[0,0,0,5,5]</span></span><br></pre></td></tr></table></figure>
+
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/04/28/004/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-003" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -150,7 +321,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/27/003/">数组基础2(补充)</a>
+      <a class="article-title" href="/2021/04/27/003/">数组基础2</a>
     </h1>
   
 
@@ -168,26 +339,50 @@
 <h2 id="数组常用方法"><a href="#数组常用方法" class="headerlink" title="数组常用方法"></a>数组常用方法</h2><h3 id="indexOf-text-start"><a href="#indexOf-text-start" class="headerlink" title="indexOf(text,start)"></a>indexOf(text,start)</h3><p>text 查找的元素<br>start  可选项  起始搜索位置 默认为0</p>
 <p>返回要查找元素在数组的位置 没有找到 就返回 -1</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr.indexOf(<span class="number">2</span>));   <span class="comment">//1</span></span><br><span class="line"><span class="built_in">console</span>.log(arr.indexOf(<span class="number">2</span>,<span class="number">2</span>));  <span class="comment">// -1</span></span><br></pre></td></tr></table></figure>
-<p>lastIndexOf 与该方法差不多  只是从数组末尾开始向前搜索</p>
+<p>lastIndexOf 与该方法差不多  只是从数组末尾开始向前搜索<br><br></p>
 <h3 id="includes-text-start"><a href="#includes-text-start" class="headerlink" title="includes(text,start)"></a>includes(text,start)</h3><p>和indexOf()类似 返回布尔值</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr.includes(<span class="number">2</span>));  <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(arr.includes(<span class="number">2</span>,<span class="number">2</span>));   <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<br>
 
 <h3 id="find-fn-this"><a href="#find-fn-this" class="headerlink" title="find(fn,this)"></a>find(fn,this)</h3><p>fn 一个函数 fn(value,index,arr)<br>    value 数组值<br>    index 数组下标<br>    arr  原数组<br>this  可选参数  用于指定fn函数this的值</p>
 <p>返回第一个匹配的元素  没有就返回undefined</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line"><span class="keyword">let</span> res = arr.find(<span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>);</span><br><span class="line">    <span class="comment">// 1 0 [1,2,3,4]</span></span><br><span class="line">    <span class="comment">// 2 1 [1,2,3,4]</span></span><br><span class="line">    <span class="comment">// 3 2 [1,2,3,4]</span></span><br><span class="line">    <span class="comment">// 4 3 [1,2,3,4]</span></span><br><span class="line">    <span class="keyword">return</span> value &gt; <span class="number">2</span>;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(res);   <span class="comment">//3</span></span><br></pre></td></tr></table></figure>
+<br>
 
 <h3 id="findIndex-fn-this"><a href="#findIndex-fn-this" class="headerlink" title="findIndex(fn,this)"></a>findIndex(fn,this)</h3><p>和find()类似 只不过返回的是第一个匹配元素的下标值</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> people = [</span><br><span class="line">    &#123;</span><br><span class="line">        name: <span class="string">&#x27;zhangpeng&#x27;</span>,</span><br><span class="line">        age: <span class="number">38</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        name: <span class="string">&#x27;liuquan&#x27;</span>,</span><br><span class="line">        age: <span class="number">18</span></span><br><span class="line">    &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(people.findIndex(<span class="function">(<span class="params">value</span>) =&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> value.age &lt; <span class="number">20</span></span><br><span class="line">&#125;))  <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+<br>
 
 <h3 id="reverse"><a href="#reverse" class="headerlink" title="reverse()"></a>reverse()</h3><p>将数组元素反向排列</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">console</span>.log(arr.reverse());  <span class="comment">// [5,4,3,2,1]</span></span><br></pre></td></tr></table></figure>
+<br>
 
 <h3 id="sort"><a href="#sort" class="headerlink" title="sort()"></a>sort()</h3><p>默认情况 sort按升序排列数组 不过会在每一项调用String()，然后比较字符串来决定顺序</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">0</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">10</span>,<span class="number">15</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr.sort());  <span class="comment">//[0,1,10,15,5]</span></span><br></pre></td></tr></table></figure>
 
 <p>sort()可以接收一个参数 比较函数<br>该函数的返回值 决定数组的那一项要不要移动位置<br>返回正数  第一个参数 和 第二个参数改变位置<br>返回负数  则不要移动</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">8</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">3</span>,<span class="number">5</span>];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compare</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a - b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compare1</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> b - a</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(arr.sort(compare));  <span class="comment">//[3,5,5,6,7,8];</span></span><br><span class="line"><span class="built_in">console</span>.log(arr.sort(compare1));  <span class="comment">//[8,7,6,5,5,3];</span></span><br></pre></td></tr></table></figure>
-<p>不过如果只是反转数组，reverse()效率更快</p>
+<p>不过如果只是反转数组，reverse()效率更快<br><br></p>
+<h2 id="迭代方法"><a href="#迭代方法" class="headerlink" title="迭代方法"></a>迭代方法</h2><p>数组有5个迭代方法，每个方法接收两个参数：以每一项为参数运行的函数，以及该函数的this指向.每个函数接收3个参数：数组元素，元素下标和原数组</p>
+<h3 id="every-fn-this"><a href="#every-fn-this" class="headerlink" title="every(fn,this)"></a>every(fn,this)</h3><p>fn(value,index,arr)<br>this  fn的this指向  可选参数<br>从数组中检索符合某个条件的元素，所有元素都符合，返回true<br>否则 返回false</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr.every(<span class="function">(<span class="params">value</span>)=&gt;</span> value &gt; <span class="number">2</span>)); <span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(arr.every(<span class="function">(<span class="params">value</span>) =&gt;</span> value &gt; <span class="number">0</span>));<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<br>
+
+<h3 id="some-fn-this"><a href="#some-fn-this" class="headerlink" title="some(fn,this)"></a>some(fn,this)</h3><p>与every()相反，只要有一项满足条件就返回true</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr.some(<span class="function">(<span class="params">value</span>)=&gt;</span> value &gt; <span class="number">4</span>)); <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(arr.some(<span class="function">(<span class="params">value</span>)=&gt;</span> value &lt; <span class="number">0</span>)); <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<br>
+
+<h3 id="forEach-fn-this"><a href="#forEach-fn-this" class="headerlink" title="forEach(fn,this)"></a>forEach(fn,this)</h3><p>遍历数组，可以在函数fn内改变数组元素 本质上相当于for循环遍历数组  没有返回值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line"><span class="keyword">let</span> res = arr.forEach(<span class="function">(<span class="params">value,index,arr</span>) =&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(value,index,arr);</span><br><span class="line">    arr[index] *= <span class="number">2</span>;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(res);  <span class="comment">// undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(arr); <span class="comment">// </span></span><br></pre></td></tr></table></figure>
+<br>
+
+<h3 id="filter-fn-this"><a href="#filter-fn-this" class="headerlink" title="filter(fn,this)"></a>filter(fn,this)</h3><p>fn函数返回true的项会组成数组之后返回</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line"><span class="keyword">let</span> res = arr.filter(<span class="function">(<span class="params">value</span>)=&gt;</span> value &gt; <span class="number">2</span>);</span><br><span class="line"><span class="built_in">console</span>.log(res);  <span class="comment">//[3,4,5];</span></span><br><span class="line"><span class="built_in">console</span>.log(arr);  <span class="comment">//[1,2,3,4,5]</span></span><br></pre></td></tr></table></figure>
+<br>
+
+<h3 id="map-fn-this"><a href="#map-fn-this" class="headerlink" title="map(fn,this)"></a>map(fn,this)</h3><p>对数组每一项都运行fn，返回由fn函数返回的结果构成的数组</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line"><span class="keyword">let</span> res = arr.map(<span class="function">(<span class="params">value</span>) =&gt;</span> value * <span class="number">2</span>);</span><br><span class="line"><span class="built_in">console</span>.log(res);  <span class="comment">//[2,4,6,8,10]</span></span><br></pre></td></tr></table></figure>
+
 
       
 
