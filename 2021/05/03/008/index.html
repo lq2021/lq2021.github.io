@@ -6,17 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://lq2021.github.io">
-  <title>函数进阶 | quan的博客</title>
+  <title>对象 | quan的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="闭包什么是闭包？闭包是指在函数中引用了另一个函数作用域中的变量，通常是在嵌套函数中实现的。闭包形成的原理很复杂，不好详细解释。 12345function f(x)&amp;#123;    return function(y)&amp;#123;        return x + y;    &amp;#125;&amp;#125; 闭包会保留它们包含函数的作用域，所以比较占用内存，使用闭包时要谨慎。 call和appl">
-<meta property="og:type" content="article">
-<meta property="og:title" content="函数进阶">
-<meta property="og:url" content="https://lq2021.github.io/2021/05/03/007/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="对象">
+<meta property="og:url" content="https://lq2021.github.io/2021/05/03/008/index.html">
 <meta property="og:site_name" content="quan的博客">
-<meta property="og:description" content="闭包什么是闭包？闭包是指在函数中引用了另一个函数作用域中的变量，通常是在嵌套函数中实现的。闭包形成的原理很复杂，不好详细解释。 12345function f(x)&amp;#123;    return function(y)&amp;#123;        return x + y;    &amp;#125;&amp;#125; 闭包会保留它们包含函数的作用域，所以比较占用内存，使用闭包时要谨慎。 call和appl">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-05-03T03:22:39.041Z">
-<meta property="article:modified_time" content="2021-05-03T06:59:56.097Z">
+<meta property="article:published_time" content="2021-05-03T04:33:26.646Z">
+<meta property="article:modified_time" content="2021-05-03T04:33:57.380Z">
 <meta property="article:author" content="quan">
 <meta property="article:tag" content="前端 css  js">
 <meta name="twitter:card" content="summary">
@@ -143,20 +141,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-007" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-008" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      函数进阶
+      对象
     </h1>
   
 
         
-        <a href="/2021/05/03/007/" class="archive-article-date">
-  	<time datetime="2021-05-03T03:22:39.041Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-03</time>
+        <a href="/2021/05/03/008/" class="archive-article-date">
+  	<time datetime="2021-05-03T04:33:26.646Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-03</time>
 </a>
         
       </header>
@@ -164,17 +162,6 @@
     <div class="article-entry" itemprop="articleBody">
       
         <br>
-
-<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>什么是闭包？闭包是指在函数中引用了另一个函数作用域中的变量，通常是在嵌套函数中实现的。闭包形成的原理很复杂，不好详细解释。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">y</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> x + y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>闭包会保留它们包含函数的作用域，所以比较占用内存，使用闭包时要谨慎。<br><br></p>
-<h2 id="call和apply方法简单实现"><a href="#call和apply方法简单实现" class="headerlink" title="call和apply方法简单实现"></a>call和apply方法简单实现</h2><p>首页要明确call和apply方法的作用，将函数绑定到某对象上，然后该对象调用函数，最后这个对象要删除这个函数。不过call和apply的区别就是第二个参数。call接收的是参数序列，而apply接收的是一个数组</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.Mycall = <span class="function"><span class="keyword">function</span>(<span class="params">context,...args</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//初始对象</span></span><br><span class="line">    <span class="keyword">let</span> ctx = context || <span class="built_in">window</span>;</span><br><span class="line">    <span class="comment">// 将函数绑定到对象上</span></span><br><span class="line">    ctx.attr = <span class="built_in">this</span>;  <span class="comment">// this是函数对象</span></span><br><span class="line">    <span class="comment">//调用方法</span></span><br><span class="line">    <span class="keyword">const</span> res = ctx.attr(...args);</span><br><span class="line">    <span class="comment">// 删除方法</span></span><br><span class="line">    <span class="keyword">delete</span> ctx.attr;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Function</span>.prototype.Myapply = <span class="function"><span class="keyword">function</span>(<span class="params">context,arr</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> ctx = context || <span class="built_in">window</span>;</span><br><span class="line">    ctx.attr = <span class="built_in">this</span>;</span><br><span class="line">    <span class="keyword">let</span> res;</span><br><span class="line">    <span class="keyword">if</span>(!arr)&#123;</span><br><span class="line">        res = ctx.attr();</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        res = ctx.attr(...arr);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">delete</span> ctx.attr;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<br>
-
-<h2 id="bind函数的简单实现"><a href="#bind函数的简单实现" class="headerlink" title="bind函数的简单实现"></a>bind函数的简单实现</h2><p>bind的作用 改变函数的this指向 返回一个新的函数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.Mybind = <span class="function"><span class="keyword">function</span>(<span class="params">context,...args</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> func = <span class="built_in">this</span>;  </span><br><span class="line">    <span class="keyword">let</span> emptyFunc = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;     <span class="comment">// 避免原型污染</span></span><br><span class="line">    <span class="keyword">const</span> binded = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">this</span> <span class="keyword">instanceof</span> binded)&#123;   <span class="comment">//如果是构造函数</span></span><br><span class="line">            func.apply(<span class="built_in">this</span>,args.concat([...arguments]));</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            func.apply(context,args.concat([...arguments]))</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    emptyFunc.prototype = <span class="built_in">this</span>.prototype;</span><br><span class="line">    binded.prototype = <span class="keyword">new</span> emptyFunc();</span><br><span class="line">    <span class="keyword">return</span> binded;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 
       
 
@@ -264,7 +251,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://lq2021.github.io/2021/05/03/007/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://lq2021.github.io/2021/05/03/008/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -278,7 +265,7 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/05/03/008/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/05/03/009/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -288,8 +275,8 @@
     </a>
   
   
-    <a href="/2021/04/28/006/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">函数基础</div>
+    <a href="/2021/05/03/007/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">函数进阶</div>
       <i class="icon-circle-right"></i>
     </a>
   

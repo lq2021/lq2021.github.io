@@ -143,6 +143,132 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-009" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/03/009/">对象</a>
+    </h1>
+  
+
+        
+        <a href="/2021/05/03/009/" class="archive-article-date">
+  	<time datetime="2021-05-03T04:33:34.031Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <br>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/05/03/009/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-008" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/03/008/">对象</a>
+    </h1>
+  
+
+        
+        <a href="/2021/05/03/008/" class="archive-article-date">
+  	<time datetime="2021-05-03T04:33:26.646Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <br>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/05/03/008/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-007" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -165,9 +291,12 @@
       
         <br>
 
-<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>什么是闭包？闭包是指在函数中引用了另一个函数作用域中的变量，通常是在嵌套函数中实现的。</p>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>什么是闭包？闭包是指在函数中引用了另一个函数作用域中的变量，通常是在嵌套函数中实现的。闭包形成的原理很复杂，不好详细解释。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">y</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> x + y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>闭包会保留它们包含函数的作用域，所以比较占用内存，使用闭包时要谨慎。<br><br></p>
 <h2 id="call和apply方法简单实现"><a href="#call和apply方法简单实现" class="headerlink" title="call和apply方法简单实现"></a>call和apply方法简单实现</h2><p>首页要明确call和apply方法的作用，将函数绑定到某对象上，然后该对象调用函数，最后这个对象要删除这个函数。不过call和apply的区别就是第二个参数。call接收的是参数序列，而apply接收的是一个数组</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.Mycall = <span class="function"><span class="keyword">function</span>(<span class="params">context,...args</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//初始对象</span></span><br><span class="line">    <span class="keyword">let</span> ctx = context || <span class="built_in">window</span>;</span><br><span class="line">    <span class="comment">// 将函数绑定到对象上</span></span><br><span class="line">    ctx.attr = <span class="built_in">this</span>;  <span class="comment">// this是函数对象</span></span><br><span class="line">    <span class="comment">//调用方法</span></span><br><span class="line">    <span class="keyword">const</span> res = ctx.attr(...args);</span><br><span class="line">    <span class="comment">// 删除方法</span></span><br><span class="line">    <span class="keyword">delete</span> ctx.attr;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Function</span>.prototype.Myapply = <span class="function"><span class="keyword">function</span>(<span class="params">context,arr</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> ctx = context || <span class="built_in">window</span>;</span><br><span class="line">    ctx.attr = <span class="built_in">this</span>;</span><br><span class="line">    <span class="keyword">let</span> res;</span><br><span class="line">    <span class="keyword">if</span>(!arr)&#123;</span><br><span class="line">        res = ctx.attr();</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        res = ctx.attr(...arr);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">delete</span> ctx.attr;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<br>
 
 <h2 id="bind函数的简单实现"><a href="#bind函数的简单实现" class="headerlink" title="bind函数的简单实现"></a>bind函数的简单实现</h2><p>bind的作用 改变函数的this指向 返回一个新的函数</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.Mybind = <span class="function"><span class="keyword">function</span>(<span class="params">context,...args</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> func = <span class="built_in">this</span>;  </span><br><span class="line">    <span class="keyword">let</span> emptyFunc = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;     <span class="comment">// 避免原型污染</span></span><br><span class="line">    <span class="keyword">const</span> binded = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">this</span> <span class="keyword">instanceof</span> binded)&#123;   <span class="comment">//如果是构造函数</span></span><br><span class="line">            func.apply(<span class="built_in">this</span>,args.concat([...arguments]));</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            func.apply(context,args.concat([...arguments]))</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    emptyFunc.prototype = <span class="built_in">this</span>.prototype;</span><br><span class="line">    binded.prototype = <span class="keyword">new</span> emptyFunc();</span><br><span class="line">    <span class="keyword">return</span> binded;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
