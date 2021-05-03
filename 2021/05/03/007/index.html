@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://lq2021.github.io">
-  <title>Archives: 2021 | quan的博客</title>
+  <title>函数进阶 | quan的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一个喜欢学习的小废物">
-<meta property="og:type" content="website">
-<meta property="og:title" content="quan的博客">
-<meta property="og:url" content="https://lq2021.github.io/archives/2021/index.html">
+  <meta name="description" content="闭包什么是闭包？闭包是指在函数中引用了另一个函数作用域中的变量，通常是在嵌套函数中实现的。 call和apply方法简单实现首页要明确call和apply方法的作用，将函数绑定到某对象上，然后该对象调用函数，最后这个对象要删除这个函数。不过call和apply的区别就是第二个参数。call接收的是参数序列，而apply接收的是一个数组 12345678910111213141516171819">
+<meta property="og:type" content="article">
+<meta property="og:title" content="函数进阶">
+<meta property="og:url" content="https://lq2021.github.io/2021/05/03/007/index.html">
 <meta property="og:site_name" content="quan的博客">
-<meta property="og:description" content="一个喜欢学习的小废物">
+<meta property="og:description" content="闭包什么是闭包？闭包是指在函数中引用了另一个函数作用域中的变量，通常是在嵌套函数中实现的。 call和apply方法简单实现首页要明确call和apply方法的作用，将函数绑定到某对象上，然后该对象调用函数，最后这个对象要删除这个函数。不过call和apply的区别就是第二个参数。call接收的是参数序列，而apply接收的是一个数组 12345678910111213141516171819">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-05-03T03:22:39.041Z">
+<meta property="article:modified_time" content="2021-05-03T04:08:49.087Z">
 <meta property="article:author" content="quan">
 <meta property="article:tag" content="前端 css  js">
 <meta name="twitter:card" content="summary">
@@ -141,238 +143,174 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-007" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      函数进阶
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/05/03/007/" class="archive-article-date">
+
+        
+        <a href="/2021/05/03/007/" class="archive-article-date">
   	<time datetime="2021-05-03T03:22:39.041Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-03</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/05/03/007/">函数进阶</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <br>
 
-        <div class="article-info info-on-right">
-          
-          
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>什么是闭包？闭包是指在函数中引用了另一个函数作用域中的变量，通常是在嵌套函数中实现的。</p>
+<h2 id="call和apply方法简单实现"><a href="#call和apply方法简单实现" class="headerlink" title="call和apply方法简单实现"></a>call和apply方法简单实现</h2><p>首页要明确call和apply方法的作用，将函数绑定到某对象上，然后该对象调用函数，最后这个对象要删除这个函数。不过call和apply的区别就是第二个参数。call接收的是参数序列，而apply接收的是一个数组</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.Mycall = <span class="function"><span class="keyword">function</span>(<span class="params">context,...args</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//初始对象</span></span><br><span class="line">    <span class="keyword">let</span> ctx = context || <span class="built_in">window</span>;</span><br><span class="line">    <span class="comment">// 将函数绑定到对象上</span></span><br><span class="line">    ctx.attr = <span class="built_in">this</span>;  <span class="comment">// this是函数对象</span></span><br><span class="line">    <span class="comment">//调用方法</span></span><br><span class="line">    <span class="keyword">const</span> res = ctx.attr(...args);</span><br><span class="line">    <span class="comment">// 删除方法</span></span><br><span class="line">    <span class="keyword">delete</span> ctx.attr;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Function</span>.prototype.Myapply = <span class="function"><span class="keyword">function</span>(<span class="params">context,arr</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> ctx = context || <span class="built_in">window</span>;</span><br><span class="line">    ctx.attr = <span class="built_in">this</span>;</span><br><span class="line">    <span class="keyword">let</span> res;</span><br><span class="line">    <span class="keyword">if</span>(!arr)&#123;</span><br><span class="line">        res = ctx.attr();</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        res = ctx.attr(...arr);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">delete</span> ctx.attr;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h2 id="bind函数的简单实现"><a href="#bind函数的简单实现" class="headerlink" title="bind函数的简单实现"></a>bind函数的简单实现</h2><p>bind的作用 改变函数的this指向 返回一个新的函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.Mybind = <span class="function"><span class="keyword">function</span>(<span class="params">context,...args</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> func = <span class="built_in">this</span>;  </span><br><span class="line">    <span class="keyword">let</span> emptyFunc = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;     <span class="comment">// 避免原型污染</span></span><br><span class="line">    <span class="keyword">const</span> binded = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">this</span> <span class="keyword">instanceof</span> binded)&#123;   <span class="comment">//如果是构造函数</span></span><br><span class="line">            func.apply(<span class="built_in">this</span>,args.concat([...arguments]));</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            func.apply(context,args.concat([...arguments]))</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    emptyFunc.prototype = <span class="built_in">this</span>.prototype;</span><br><span class="line">    binded.prototype = <span class="keyword">new</span> emptyFunc();</span><br><span class="line">    <span class="keyword">return</span> binded;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay2.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay1.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://lq2021.github.io/2021/05/03/007/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/04/28/006/" class="archive-article-date">
-  	<time datetime="2021-04-28T14:13:07.944Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-28</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2021/04/28/006/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">函数基础</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/28/006/">函数基础</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/04/28/005/" class="archive-article-date">
-  	<time datetime="2021-04-28T05:56:14.908Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/28/005/">数组进阶</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/04/28/004/" class="archive-article-date">
-  	<time datetime="2021-04-28T05:00:38.882Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/28/004/">数组基础3</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/04/27/003/" class="archive-article-date">
-  	<time datetime="2021-04-27T15:57:08.837Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/27/003/">数组基础2</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/04/27/002/" class="archive-article-date">
-  	<time datetime="2021-04-27T13:54:11.387Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/27/002/">数组基础1</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/04/26/001/" class="archive-article-date">
-  	<time datetime="2021-04-26T07:56:36.428Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/26/001/">字符串详解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/04/24/first/" class="archive-article-date">
-  	<time datetime="2021-04-24T13:09:34.331Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/24/first/">js数据类型</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -395,8 +333,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

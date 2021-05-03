@@ -143,6 +143,178 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-007" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/03/007/">函数进阶</a>
+    </h1>
+  
+
+        
+        <a href="/2021/05/03/007/" class="archive-article-date">
+  	<time datetime="2021-05-03T03:22:39.041Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <br>
+
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>什么是闭包？闭包是指在函数中引用了另一个函数作用域中的变量，通常是在嵌套函数中实现的。</p>
+<h2 id="call和apply方法简单实现"><a href="#call和apply方法简单实现" class="headerlink" title="call和apply方法简单实现"></a>call和apply方法简单实现</h2><p>首页要明确call和apply方法的作用，将函数绑定到某对象上，然后该对象调用函数，最后这个对象要删除这个函数。不过call和apply的区别就是第二个参数。call接收的是参数序列，而apply接收的是一个数组</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.Mycall = <span class="function"><span class="keyword">function</span>(<span class="params">context,...args</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//初始对象</span></span><br><span class="line">    <span class="keyword">let</span> ctx = context || <span class="built_in">window</span>;</span><br><span class="line">    <span class="comment">// 将函数绑定到对象上</span></span><br><span class="line">    ctx.attr = <span class="built_in">this</span>;  <span class="comment">// this是函数对象</span></span><br><span class="line">    <span class="comment">//调用方法</span></span><br><span class="line">    <span class="keyword">const</span> res = ctx.attr(...args);</span><br><span class="line">    <span class="comment">// 删除方法</span></span><br><span class="line">    <span class="keyword">delete</span> ctx.attr;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Function</span>.prototype.Myapply = <span class="function"><span class="keyword">function</span>(<span class="params">context,arr</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> ctx = context || <span class="built_in">window</span>;</span><br><span class="line">    ctx.attr = <span class="built_in">this</span>;</span><br><span class="line">    <span class="keyword">let</span> res;</span><br><span class="line">    <span class="keyword">if</span>(!arr)&#123;</span><br><span class="line">        res = ctx.attr();</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        res = ctx.attr(...arr);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">delete</span> ctx.attr;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="bind函数的简单实现"><a href="#bind函数的简单实现" class="headerlink" title="bind函数的简单实现"></a>bind函数的简单实现</h2><p>bind的作用 改变函数的this指向 返回一个新的函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.Mybind = <span class="function"><span class="keyword">function</span>(<span class="params">context,...args</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> func = <span class="built_in">this</span>;  </span><br><span class="line">    <span class="keyword">let</span> emptyFunc = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;     <span class="comment">// 避免原型污染</span></span><br><span class="line">    <span class="keyword">const</span> binded = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">this</span> <span class="keyword">instanceof</span> binded)&#123;   <span class="comment">//如果是构造函数</span></span><br><span class="line">            func.apply(<span class="built_in">this</span>,args.concat([...arguments]));</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            func.apply(context,args.concat([...arguments]))</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    emptyFunc.prototype = <span class="built_in">this</span>.prototype;</span><br><span class="line">    binded.prototype = <span class="keyword">new</span> emptyFunc();</span><br><span class="line">    <span class="keyword">return</span> binded;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/05/03/007/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-006" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/28/006/">函数基础</a>
+    </h1>
+  
+
+        
+        <a href="/2021/04/28/006/" class="archive-article-date">
+  	<time datetime="2021-04-28T14:13:07.944Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <br>
+
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>在js中，函数实际上是对象，每个函数都是Function类型的实例，函数名可以看成一个指向函数对象的指针。函数有3种类型，普通函数，构造函数以及箭头函数。同时函数也有3种方式定义，函数声明，函数表达式以及用Function构造函数。</p>
+<h2 id="函数定义"><a href="#函数定义" class="headerlink" title="函数定义"></a>函数定义</h2><p>函数定义有3种方式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//函数声明</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">//函数表达式</span></span><br><span class="line"><span class="keyword">let</span> sum1 = <span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用Function构造函数  不推荐使用</span></span><br><span class="line"><span class="keyword">let</span> sum2 = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;return a + b&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<br>
+
+<h3 id="函数声明和函数表达式"><a href="#函数声明和函数表达式" class="headerlink" title="函数声明和函数表达式"></a>函数声明和函数表达式</h3><p>函数声明会有一个提升的过程，即将函数提升到顶部。<br>函数表达式像一个普通的变量定义和赋值，没有函数声明提升的过程，需要先赋值再使用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// </span></span><br><span class="line">sum(<span class="number">10</span>,<span class="number">20</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a + b);</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 上面的代码相当于</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a + b);</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;   <span class="comment">// 先将函数声明提升到顶部</span></span><br><span class="line">sum(<span class="number">10</span>,<span class="number">20</span>);</span><br></pre></td></tr></table></figure>
+<br>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sum(<span class="number">10</span>,<span class="number">20</span>);  <span class="comment">//报错</span></span><br><span class="line"><span class="keyword">let</span> sum = <span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//使用var 也一样</span></span><br><span class="line">sum(<span class="number">10</span>,<span class="number">20</span>);</span><br><span class="line"><span class="keyword">var</span> sum = <span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<br>
+
+<h2 id="函数的参数"><a href="#函数的参数" class="headerlink" title="函数的参数"></a>函数的参数</h2><p>函数参数在内部表现为一个数组(arguments)。arguments对象是一个类数组对象(不是Array的实例)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">say</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>[<span class="number">0</span>],<span class="built_in">arguments</span>[<span class="number">1</span>]);</span><br><span class="line">&#125;</span><br><span class="line">say(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+<br>
+
+<p>注意</p>
+<ol>
+<li>在箭头函数中是不能使用arguments关键字访问函数的参数的。</li>
+<li>因为函数参数是由类数组表示的，所以没有方法的重载</li>
+</ol>
+<br>
+
+<h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><p>箭头函数和函数表达式的行为是相同的，箭头函数的语法非常简洁，但也有一些限制。箭头函数不能使用arguments、super、new.target，也不能作为构造函数。此外，箭头函数也没有prototype属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//正常写法</span></span><br><span class="line"><span class="keyword">let</span> sum = <span class="function">(<span class="params">a,b</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//只有一行代码时 不用大括号，函数的返回值就是这行代码表达式的值</span></span><br><span class="line"><span class="keyword">let</span> sum = <span class="function">(<span class="params">a,b</span>) =&gt;</span> a + b;</span><br><span class="line"></span><br><span class="line"><span class="comment">//只有一个参数</span></span><br><span class="line"><span class="keyword">let</span> say = <span class="function"><span class="params">a</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>箭头函数还要注意的是 this指向问题</p>
+<h2 id="this"><a href="#this" class="headerlink" title="this"></a>this</h2><p>在标准函数中,this是指把函数当成方法调用的上下文对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>); <span class="comment">//window</span></span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line">sum(<span class="number">10</span>,<span class="number">20</span>); </span><br></pre></td></tr></table></figure>
+<p>函数自调用时，this指向window。可以看成window.sum，所以this指向window</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    name: <span class="string">&#x27;zp&#x27;</span>,</span><br><span class="line">    <span class="function"><span class="title">sum</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">this</span>); <span class="comment">// obj</span></span><br><span class="line">        <span class="keyword">return</span> a + b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.sum(<span class="number">10</span>,<span class="number">20</span>);  </span><br></pre></td></tr></table></figure>
+<p>是obj在调用sum函数，所以this是指向obj对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    name : <span class="string">&#x27;zp&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>);   <span class="comment">//obj</span></span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line">sum.call(obj,<span class="number">10</span>,<span class="number">20</span>);</span><br></pre></td></tr></table></figure>
+<p>使用了call 改变了函数的this指向，this指向obj对象，函数还有apply方法也可以改变函数的this指向</p>
+<p>在箭头函数中，this是指定义箭头函数的上下文</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> sum = <span class="function">(<span class="params">a,b</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>);  <span class="comment">//window</span></span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line">sum(<span class="number">10</span>,<span class="number">20</span>);</span><br></pre></td></tr></table></figure>
+<p>在事件回调或者定时器回调函数中，this值指向的并非想要的对象，可以将回调函数改写成箭头函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">     name: <span class="string">&#x27;zp&#x27;</span>,</span><br><span class="line">     <span class="function"><span class="title">sum</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">         <span class="keyword">let</span> res = <span class="function">(<span class="params">a,b</span>)=&gt;</span>&#123;</span><br><span class="line">             <span class="built_in">console</span>.log(<span class="built_in">this</span>.name); <span class="comment">//&#x27;zp&#x27;</span></span><br><span class="line">             <span class="keyword">return</span> a + b;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">return</span> res(a,b);</span><br><span class="line">     &#125;,</span><br><span class="line">     <span class="function"><span class="title">sum1</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">         <span class="keyword">let</span> res = <span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">             <span class="built_in">console</span>.log(<span class="built_in">this</span>);  <span class="comment">//window</span></span><br><span class="line">             <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);  <span class="comment">//&#x27;&#x27;</span></span><br><span class="line">             <span class="keyword">return</span> a + b;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">return</span> res(a,b);</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> obj.sum(<span class="number">10</span>,<span class="number">20</span>);</span><br><span class="line"> obj.sum1(<span class="number">10</span>,<span class="number">20</span>);</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/04/28/006/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-005" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
