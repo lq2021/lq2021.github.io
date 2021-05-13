@@ -143,6 +143,84 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-009" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/13/009/">对象克隆 和 new关键字</a>
+    </h1>
+  
+
+        
+        <a href="/2021/05/13/009/" class="archive-article-date">
+  	<time datetime="2021-05-13T14:57:28.011Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <br>
+
+<h2 id="对象克隆"><a href="#对象克隆" class="headerlink" title="对象克隆"></a>对象克隆</h2><h3 id="浅克隆"><a href="#浅克隆" class="headerlink" title="浅克隆"></a>浅克隆</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">clone1</span>(<span class="params">target</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">typeof</span> target === <span class="string">&#x27;object&#x27;</span> &amp;&amp; target != <span class="literal">null</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">Array</span>.isArray(target))&#123;</span><br><span class="line">      <span class="keyword">return</span> [...target];</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;...target&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> target;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过数组和对象的解构进行克隆。注意 typeof null的结果是object</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">clone2</span>(<span class="params">target</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">typeof</span> target === <span class="string">&#x27;object&#x27;</span> &amp;&amp; target != <span class="literal">null</span>)&#123;</span><br><span class="line">    <span class="keyword">let</span> res = <span class="built_in">Array</span>.isArray(target) ? [] : &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> key <span class="keyword">in</span> target)&#123;</span><br><span class="line">      <span class="keyword">if</span>(target.hasOwnProperty(key))&#123;</span><br><span class="line">        res[key] = target[key];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> target;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过循环遍历来克隆对象。注意for in 会遍历原型对象的属性值，通过hasOwnProperty来过滤掉原型上的属性</p>
+<h3 id="深克隆"><a href="#深克隆" class="headerlink" title="深克隆"></a>深克隆</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepClone1</span>(<span class="params">target</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> str = <span class="built_in">JSON</span>.stringify(target);</span><br><span class="line">  <span class="keyword">let</span> data = <span class="built_in">JSON</span>.parse(str);</span><br><span class="line">  <span class="keyword">return</span> data;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>通过JSON.stringify将对象变成字符串，然后通过JSON.parse将字符串变成对象。 注意，该方法不能克隆函数，不能解决循环引用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepClone2</span>(<span class="params">target</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">typeof</span> target === <span class="string">&#x27;object&#x27;</span> &amp;&amp; target !== <span class="literal">null</span>)&#123;</span><br><span class="line">    <span class="keyword">let</span> res = <span class="built_in">Array</span>.isArray(target) ? [] : &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> key <span class="keyword">in</span> target)&#123;</span><br><span class="line">      <span class="keyword">if</span>(target.hasOwnProperty(key))&#123;</span><br><span class="line">        res[key] = deepClone2(target[key]);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> target;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过递归的方法，克隆对象，以及对象中的引用类型数据。但是不能解决循环引用问题。</p>
+<p>循环引用： 就是a属性的值是b属性，而b属性的值是a属性。类似无限套娃的感觉。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepClone3</span>(<span class="params">target,map = <span class="keyword">new</span> map()</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">typeof</span> target === <span class="string">&#x27;object&#x27;</span> &amp;&amp; target != <span class="literal">null</span>)&#123;</span><br><span class="line">    <span class="keyword">let</span> cache = map.get(target);</span><br><span class="line">    <span class="keyword">if</span>(cache)&#123;</span><br><span class="line">      <span class="keyword">return</span> cache;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> isArray = <span class="built_in">Array</span>.isArray(target);</span><br><span class="line">    <span class="keyword">let</span> res = isArray ? [] : &#123;&#125;;</span><br><span class="line">    map.set(target,res);</span><br><span class="line">    <span class="keyword">if</span>(isArray)&#123;</span><br><span class="line">      target.forEach(<span class="function">(<span class="params">item,index</span>) =&gt;</span>&#123;</span><br><span class="line">        res[index] = deepClone3(item,map);</span><br><span class="line">      &#125;) </span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      <span class="built_in">Object</span>.keys(target).forEach(<span class="function"><span class="params">key</span> =&gt;</span>&#123;</span><br><span class="line">        res[key] = deepClone3(target[key],map);</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> target;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="new-关键字"><a href="#new-关键字" class="headerlink" title="new 关键字"></a>new 关键字</h2><p>new关键字 被执行的具体步骤是什么？</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Mynew</span>(<span class="params">fn,...args</span>)</span>&#123;</span><br><span class="line"> <span class="comment">//  创建一个新的对象</span></span><br><span class="line"> <span class="keyword">const</span> obj = &#123;&#125;;</span><br><span class="line"> <span class="comment">// 把新对象的原型绑定到构造函数的原型上</span></span><br><span class="line"> <span class="built_in">Object</span>.setPrototypeOf(obj,fn.prototype);</span><br><span class="line"> <span class="comment">//  构造函数被执行，执行过程中this绑定在新对象上</span></span><br><span class="line"> fn.call(obj,...args);</span><br><span class="line"> <span class="comment">// 返回这个新对象</span></span><br><span class="line"> <span class="keyword">return</span> obj;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.name = name;</span><br><span class="line">  <span class="built_in">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> res1 = <span class="keyword">new</span> Person(<span class="string">&#x27;zp&#x27;</span>,<span class="number">18</span>);</span><br><span class="line"><span class="keyword">let</span> res2 = <span class="keyword">new</span> Person(<span class="string">&#x27;zp&#x27;</span>,<span class="number">27</span>);</span><br><span class="line"><span class="built_in">console</span>.log(res1);  <span class="comment">//Person&#123;name:&#x27;zp&#x27;,age:18&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(res2);  <span class="comment">//Person&#123;name:&#x27;zp&#x27;,age:27&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/05/13/009/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-008" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
