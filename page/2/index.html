@@ -6,12 +6,12 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://lq2021.github.io">
-  <title>Archives: 2021/5 | quan的博客</title>
+  <title>quan的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="一个喜欢学习的小废物">
 <meta property="og:type" content="website">
 <meta property="og:title" content="quan的博客">
-<meta property="og:url" content="https://lq2021.github.io/archives/2021/05/index.html">
+<meta property="og:url" content="https://lq2021.github.io/page/2/index.html">
 <meta property="og:site_name" content="quan的博客">
 <meta property="og:description" content="一个喜欢学习的小废物">
 <meta property="og:locale" content="en_US">
@@ -143,155 +143,208 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-001" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/26/001/">字符串详解</a>
+    </h1>
+  
+
+        
+        <a href="/2021/04/26/001/" class="archive-article-date">
+  	<time datetime="2021-04-26T07:56:36.428Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-26</time>
+</a>
+        
+      </header>
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <br>
+
+<h2 id="字符串声明"><a href="#字符串声明" class="headerlink" title="字符串声明"></a>字符串声明</h2><p>1.使用new String或者String</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s1 = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">&#x27;123&#x27;</span>);   <span class="comment">//返回一个String对象 存放的是字符串内容</span></span><br><span class="line"><span class="keyword">let</span> s2 = <span class="built_in">String</span>(<span class="string">&#x27;123&#x27;</span>);   <span class="comment">// 返回一个字符串</span></span><br><span class="line"><span class="built_in">console</span>.log(s1);   <span class="comment">//String(&#x27;123&#x27;)</span></span><br><span class="line"><span class="built_in">console</span>.log(s2);   <span class="comment">//  &#x27;123&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>2.字面量声明</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s = <span class="string">&#x27;123&#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(s);  <span class="comment">// &#x27;123&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="字符串常用方法"><a href="#字符串常用方法" class="headerlink" title="字符串常用方法"></a>字符串常用方法</h2><h3 id="indexOf-text-index"><a href="#indexOf-text-index" class="headerlink" title="indexOf(text,index)"></a>indexOf(text,index)</h3><p>text 所查找的字符串  index  指定下标开始遍历  默认为0<br>查找指定字符串第一次出现的位置<br>返回值  第一个匹配文本的下标  没有就返回-1</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s = <span class="string">&#x27;zhangpeng&#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(s.indexOf(<span class="string">&#x27;g&#x27;</span>));  <span class="comment">//  4</span></span><br><span class="line"><span class="built_in">console</span>.log(s.indexOf(<span class="string">&#x27;g&#x27;</span>,<span class="number">6</span>));   <span class="comment">//  8</span></span><br></pre></td></tr></table></figure>
+<br>
+
+<h3 id="lastIndexOf-text-index"><a href="#lastIndexOf-text-index" class="headerlink" title="lastIndexOf(text,index)"></a>lastIndexOf(text,index)</h3><p>和indexOf相反  查找指定字符串最后一次出现的位置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s = <span class="string">&#x27;zhangpeng&#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(s.lastIndexOf(<span class="string">&#x27;g&#x27;</span>));   <span class="comment">// 8</span></span><br><span class="line"><span class="built_in">console</span>.log(s.lastIndexOf(<span class="string">&#x27;g&#x27;</span>,<span class="number">6</span>));   <span class="comment">// 4</span></span><br></pre></td></tr></table></figure>
+<br>
+
+<h3 id="search-text"><a href="#search-text" class="headerlink" title="search(text)"></a>search(text)</h3><p>search 和indexOf 很相似 但无法设置第二个参数  但是可以定义匹配模式即使用正则表达式  但不支持全局匹配</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;zhangpeng&#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.search(<span class="string">&#x27;pe&#x27;</span>));   <span class="comment">//5</span></span><br><span class="line"><span class="built_in">console</span>.log(str.search(<span class="regexp">/g/</span>));   <span class="comment">// 4</span></span><br><span class="line"><span class="built_in">console</span>.log(str.search(<span class="regexp">/g/g</span>))   <span class="comment">// 4 不支持全局匹配 </span></span><br></pre></td></tr></table></figure>
+<br>
+
+<h3 id="slice-start-end"><a href="#slice-start-end" class="headerlink" title="slice(start,end)"></a>slice(start,end)</h3><p>切割字符串 返回被切割的子字符串<br>start 起始下标   end 终止位置<br>若某个参数为负，则从字符串的后面开始遍历<br>第二个参数默认是字符串长度</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;zhangpeng&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> str1 = str.slice(<span class="number">0</span>,<span class="number">5</span>);</span><br><span class="line"><span class="built_in">console</span>.log(str1);   <span class="comment">//&#x27;zhang&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(str.slice(<span class="number">2</span>,-<span class="number">5</span>));   <span class="comment">// &#x27;an&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(str.slice(<span class="number">5</span>));   <span class="comment">// &#x27;peng&#x27;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<br>
+
+<h3 id="substring-start-stop"><a href="#substring-start-stop" class="headerlink" title="substring(start,stop)"></a>substring(start,stop)</h3><p>类似slice 严格上不接受负的参数<br>如果start &gt; stop  执行该方法前 会将这两个参数交换位置<br>start &lt; 0 会将start 变为 0</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;zhangpeng&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> str1 = str.substring(<span class="number">0</span>,<span class="number">5</span>);</span><br><span class="line"><span class="built_in">console</span>.log(str1);   <span class="comment">//&#x27;zhang&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(str.substring(<span class="number">2</span>,-<span class="number">5</span>));   </span><br><span class="line"><span class="comment">// &#x27;zh&#x27;   相当于str.substring(0,2);</span></span><br><span class="line"><span class="built_in">console</span>.log(str.substring(<span class="number">5</span>));   <span class="comment">// &#x27;peng&#x27;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<br>
+
+<h3 id="substr-start-length"><a href="#substr-start-length" class="headerlink" title="substr(start,length)"></a>substr(start,length)</h3><p>类似 slice  但第二个参数 是截取字符串的长度<br>没有通过ES标准化 不建议使用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;zhangpeng&#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.substr(<span class="number">0</span>,<span class="number">5</span>));  <span class="comment">//&#x27;zhang&#x27;</span></span><br></pre></td></tr></table></figure>
+<br>
+
+<h3 id="replace-reg-text-callback"><a href="#replace-reg-text-callback" class="headerlink" title="replace(reg,text || callback)"></a>replace(reg,text || callback)</h3><p>1.第二个参数是普通字符串</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;zhangpeng&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> reg = <span class="regexp">/zhang/</span>;</span><br><span class="line"><span class="keyword">let</span> res = str.replace(reg,<span class="string">&#x27;Z&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(res);   <span class="comment">//Zpeng </span></span><br></pre></td></tr></table></figure>
+<p>2.第二个参数是回调函数<br>    回调函数的参数<br>        reg  捕获的内容<br>        index  匹配到的正则的下标<br>        str  原字符串</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;zhangpeng&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> reg = <span class="regexp">/g/</span>;</span><br><span class="line"><span class="keyword">let</span> res = str.replace(reg,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>); <span class="comment">//[&#x27;g&#x27;, 4, &#x27;zhangpeng&#x27;];</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;+&#x27;</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(res);   <span class="comment">//zhan+peng</span></span><br></pre></td></tr></table></figure>
+<p>注意 该方法支持全局匹配 对大小写敏感<br><br></p>
+<h3 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h3><p><strong>trim</strong>　　　　　　删除字符串两端空白<br><strong>concat</strong>　　　　　连接字符串  一般使用 +<br><strong>split</strong>　　　　　 &nbsp;将字符串转换为数组<br><strong>toUpperCase</strong> 　 将字符串转为大写<br><strong>toLowerCase</strong> 　 将字符串转为小写</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/04/26/001/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="archives">
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-first" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/05/14/011/" class="archive-article-date">
-  	<time datetime="2021-05-14T11:53:19.257Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-14</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/05/14/011/">BOM之location对象和history对象</a>
+      <a class="article-title" href="/2021/04/24/first/">js数据类型</a>
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/05/14/010/" class="archive-article-date">
-  	<time datetime="2021-05-14T04:03:52.276Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-14</time>
+        
+        <a href="/2021/04/24/first/" class="archive-article-date">
+  	<time datetime="2021-04-24T13:09:34.331Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-24</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/05/14/010/">BOM之window对象</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <br>
 
-        <div class="article-info info-on-right">
-          
-          
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>ES6中简单的数据类型（也称原始类型）: Undefined Null Boolean Number String Symbol symbol 是ES6新增的。还有一种复杂的数据类型 Object  是一种无序名值对的集合。</p>
+<h2 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h2><p><strong>typeof</strong>可以确定变量的数据类型。 对一个变量使用 <strong>typeof</strong> 操作符 会返回字符串有以下几种: ‘undefined’ ‘boolean’ ‘string’ ‘number’ ‘object’ ‘function’ ‘symbol’。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;&#125;;</span><br><span class="line"><span class="keyword">let</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;1&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> num1 = <span class="number">12</span>;</span><br><span class="line"><span class="keyword">let</span> bool = <span class="literal">true</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> obj);   <span class="comment">//&#x27;object&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> fn);  <span class="comment">// &#x27;function&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> str);   <span class="comment">// &#x27;string&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> num1);  <span class="comment">// &#x27;number&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> bool);  <span class="comment">// &#x27;boolean&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> obj.a);    <span class="comment">// &#x27;undefined&#x27;</span></span><br></pre></td></tr></table></figure>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+<h2 id="Undefined类型"><a href="#Undefined类型" class="headerlink" title="Undefined类型"></a>Undefined类型</h2><p><strong>Undefined</strong> 只有一个值，就是undefined。 当使用let 或者 var 声明了变量但没有初始化时，就相当于给变量赋予了undefined值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a;</span><br><span class="line"><span class="keyword">let</span> b = <span class="literal">undefined</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a === b); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>！注意undefined值的变量和未定义变量是有区别的</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a;</span><br><span class="line"><span class="comment">//let b  </span></span><br><span class="line"><span class="comment">//b变量没有被定义</span></span><br><span class="line"><span class="built_in">console</span>.log(a);   <span class="comment">// &#x27;undefined&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(b);   <span class="comment">//报错</span></span><br></pre></td></tr></table></figure>
+
+<p>但使用typeof 操作符时</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a;</span><br><span class="line"><span class="comment">// let b</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> a);   <span class="comment">// &#x27;undefined&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> b);   <span class="comment">// &#x27;undefined&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>无论声明还是未声明，typeof返回的都是字符串’undefined’。 undefined是一个假值，因此需要用更简洁的方式检测它。</p>
+<h2 id="Null-类型"><a href="#Null-类型" class="headerlink" title="Null 类型"></a>Null 类型</h2><p>Null类型也只有一个值 特殊值null。 本质上讲，null值表示一个空对象指针，所以typeof null值时会返回 ‘object’ 的原因</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> time = <span class="literal">null</span>;</span><br><span class="line">consloe.log(<span class="keyword">typeof</span> time);   <span class="comment">//&#x27;object&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>undefined值是由null值派生的，所以，它们表面上相等。但是绝对上，它们不相等。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="literal">null</span> == <span class="literal">undefined</span>); <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">null</span> === <span class="literal">undefined</span>);  <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<h2 id="Boolean-类型"><a href="#Boolean-类型" class="headerlink" title="Boolean 类型"></a>Boolean 类型</h2><p>Boolean类型有两个字面值：true 和 false.  Boolean()函数可以将其他类型的值转变成Boolean类型</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> strBoolean = <span class="built_in">Boolean</span>(str);</span><br><span class="line"><span class="built_in">console</span>.log(strBoolean);  <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Number-类型"><a href="#Number-类型" class="headerlink" title="Number 类型"></a>Number 类型</h2><p>Number类型包含整数和浮点数。对于整数，在javascript中，有+0 和 -0的存在。对于浮点数，在检测两个值相等时，用==不是特别严谨。比如 0.1 + 0.2 == 0.3;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">0.1</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="number">0.2</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a + b);        <span class="comment">//0.300 000 000 000 000 04</span></span><br><span class="line"><span class="built_in">console</span>.log(a + b == <span class="number">0.3</span>);  <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<p>ES并不支持世界上的所有数值。ES可以表示的最小数值保存在 Number.MIN_VALUE中。最大数值是Number.MAX_VALUE。 如果某个数值超过了JavaScript可以表示的范围，那么该值会被转化成 Infinity(无穷值);</p>
+<h4 id="NaN"><a href="#NaN" class="headerlink" title="NaN"></a>NaN</h4><p>NaN是一个特殊的值 意思是 “不是数值”(Not a Number) 用来表示本来要返回的数值的操作失败了。 比如使用0做除法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">0</span>/<span class="number">0</span>); <span class="comment">//NaN</span></span><br></pre></td></tr></table></figure>
+<p>NaN 有几个独特的属性。<br>任何涉及NaN的操作始终返回NaN;<br>NaN不等于包括NaN在内的任何值;<br>isNaN()函数：接收一个参数，任意数据类型，判断该参数是否可以转化成数字。</p>
+<h3 id="数值转换"><a href="#数值转换" class="headerlink" title="数值转换"></a>数值转换</h3><p>Number(),parseInt(),parseFloat()  将非数值转换为数值，具体使用方法，以后详细介绍。</p>
+<h2 id="String-类型"><a href="#String-类型" class="headerlink" title="String 类型"></a>String 类型</h2><p>字符串类型可以使用双引号、单引号、反引号标示。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str1 = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> str2 = <span class="string">&quot;hello world&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> str3 = <span class="string">`heoll world`</span>;</span><br></pre></td></tr></table></figure>
+<p>有两种方式把值转换为字符串。</p>
+<ol>
+<li>toString() 可以用于数值、布尔值、对象和字符串值。 但是null和undefined没有toString()方法</li>
+<li>String()  该函数的规则<br> 如果值有toString() 方法 则调用该方法并返回结果<br> 如果值是null或undefined  则返回’null’ 或 ‘undefined’</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> age = <span class="number">18</span>;</span><br><span class="line"><span class="keyword">let</span> ageStr = age.toString(); </span><br><span class="line"><span class="built_in">console</span>.log(ageStr);   <span class="comment">// &#x27;18&#x27;</span></span><br><span class="line"><span class="keyword">let</span> found = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">let</span> foundStr = found.toString();</span><br><span class="line"><span class="built_in">console</span>.log(foundStr);   <span class="comment">// &#x27;true&#x27;;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> time = <span class="literal">null</span>;</span><br><span class="line"><span class="comment">// let timeStr1 = time.toString();  // 报错</span></span><br><span class="line"><span class="keyword">let</span> timeStr2 = <span class="built_in">String</span>(<span class="literal">null</span>);</span><br><span class="line"><span class="comment">// console.log(timeStr1);</span></span><br><span class="line"><span class="built_in">console</span>.log(timeStr2);</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/04/24/first/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/05/13/009/" class="archive-article-date">
-  	<time datetime="2021-05-13T14:57:28.011Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-13</time>
-</a>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/05/13/009/">对象克隆 和 new关键字</a>
-    </h1>
-  
+        
+        
+    </div>
+</aside>
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/05/05/008/" class="archive-article-date">
-  	<time datetime="2021-05-05T09:54:01.041Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/05/05/008/">对象</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/05/03/007/" class="archive-article-date">
-  	<time datetime="2021-05-03T03:22:39.041Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/05/03/007/">函数进阶</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </nav>
   
-
-    
 
 
           </div>
@@ -313,9 +366,9 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: false,
+		isHome: true,
 		isPost: false,
-		isArchive: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
